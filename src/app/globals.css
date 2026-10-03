@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #07111f;
+  --foreground: #e5eefc;
+  --surface: rgba(8, 18, 34, 0.78);
+  --muted: #94a3b8;
+  --border: rgba(148, 163, 184, 0.16);
+  --accent: #5eead4;
+  --accent-2: #7c3aed;
+  --page-top: rgba(94, 234, 212, 0.15);
+  --page-mid: rgba(124, 58, 237, 0.14);
+  --page-base: #07111f;
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html.light {
+  --background: #f7fafc;
+  --foreground: #0f172a;
+  --surface: rgba(255, 255, 255, 0.82);
+  --muted: #475569;
+  --border: rgba(15, 23, 42, 0.12);
+  --accent: #0f766e;
+  --accent-2: #2563eb;
+  --page-top: rgba(15, 118, 110, 0.12);
+  --page-mid: rgba(37, 99, 235, 0.12);
+  --page-base: #f7fafc;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at top, var(--page-top), transparent 32%),
+    radial-gradient(circle at 80% 20%, var(--page-mid), transparent 24%),
+    linear-gradient(180deg, color-mix(in srgb, var(--page-base) 86%, black 14%) 0%, var(--page-base) 44%, color-mix(in srgb, var(--page-base) 92%, black 8%) 100%);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+* {
+  border-color: var(--border);
+}
+
+::selection {
+  background: rgba(94, 234, 212, 0.24);
+  color: #f8fafc;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+  }
+
+  a,
+  button,
+  input,
+  textarea,
+  select {
+    @apply outline-none transition duration-200;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    box-shadow: 0 0 0 2px rgba(94, 234, 212, 0.35);
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply border border-white/10 bg-white/5 backdrop-blur-xl;
+  }
+
+  .section-shell {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-title {
+    @apply text-3xl font-semibold tracking-tight text-white sm:text-4xl;
+  }
+
+  .section-copy {
+    @apply mt-4 max-w-2xl text-base leading-7 text-slate-300;
+  }
+
+  .pill {
+    @apply inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200;
+  }
+
+  .button-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-accent px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-400/10 transition hover:-translate-y-0.5 hover:bg-[#8bf1e1];
+  }
+
+  .button-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:border-cyan-400/50 hover:bg-white/10;
+  }
+}
