@@ -68,11 +68,11 @@ export default function Home() {
 
             <h1 className="mt-6 max-w-4xl font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
               Hi, I’m {siteConfig.name}.
-              <span className="block text-accent">I build polished digital products that turn ideas into action.</span>
+              <span className="block text-accent">I build modern web applications that solve real-world problems.</span>
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
-              Full-stack developer and Computer Science graduate specializing in fast, responsive Next.js applications, robust APIs, and clean UX that earns user trust.
+              Full-stack developer and Computer Science graduate passionate about building fast, responsive, and user-friendly web applications.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -121,10 +121,10 @@ export default function Home() {
               <div className="relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-slate-950/70">
                 <div className="aspect-[4/5] w-full">
                   <Image
-                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=80"
+                    src="/profile1.jpg"
                     alt={`${siteConfig.name} - Portrait`}
-                    width={1200}
-                    height={1500}
+                    width={450}
+                    height={300}
                     className="h-full w-full object-cover"
                     priority
                   />
@@ -141,7 +141,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Highlights Bar */}
+      {/* Highlights Bar
       <section className="section-shell py-8">
         <FadeIn>
           <div className="grid grid-cols-2 gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-lg sm:grid-cols-4">
@@ -163,7 +163,7 @@ export default function Home() {
             </div>
           </div>
         </FadeIn>
-      </section>
+      </section> */}
 
       {/* Featured Projects Preview Section */}
       <section className="section-shell py-16 sm:py-20">

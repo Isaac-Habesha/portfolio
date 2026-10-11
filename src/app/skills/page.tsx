@@ -39,7 +39,7 @@ const detailedSkills: SkillItem[] = [
   { name: 'React', category: 'Frontend', description: 'Hooks, custom state management, performance memoization, and component composition.', proficiency: 'Advanced' },
   { name: 'Next.js (App Router)', category: 'Frontend', description: 'Server Components, SSR/SSG, route handlers, metadata SEO, and fast bundle generation.', proficiency: 'Advanced' },
   { name: 'Tailwind CSS', category: 'Frontend', description: 'Utility-first modern design systems, custom themes, dark mode, and responsive layouts.', proficiency: 'Advanced' },
-  { name: 'Framer Motion', category: 'Frontend', description: 'Micro-interactions, layout transitions, exit animations, and spring physics.', proficiency: 'Proficient' },
+  // { name: 'Framer Motion', category: 'Frontend', description: 'Micro-interactions, layout transitions, exit animations, and spring physics.', proficiency: 'Proficient' },
   { name: 'React Hook Form & Zod', category: 'Frontend', description: 'Schema-driven form validation, type inference, and streamlined error handling.', proficiency: 'Advanced' },
 
   // Backend
@@ -47,12 +47,12 @@ const detailedSkills: SkillItem[] = [
   { name: 'Express.js', category: 'Backend', description: 'RESTful API endpoints, middleware pipelines, authentication, and error handlers.', proficiency: 'Advanced' },
   { name: 'Django & DRF', category: 'Backend', description: 'Model-view-controller patterns, ORM relationships, authentication, and admin portals.', proficiency: 'Proficient' },
   { name: 'PostgreSQL', category: 'Backend', description: 'Relational data modeling, foreign keys, transactions, and migration strategies.', proficiency: 'Proficient' },
-  { name: 'REST APIs & GraphQL', category: 'Backend', description: 'API contract design, status codes, payload serialization, and client integrations.', proficiency: 'Advanced' },
+  { name: 'REST APIs', category: 'Backend', description: 'API contract design, status codes, payload serialization, and client integrations.', proficiency: 'Advanced' },
 
   // Cloud & DevOps
-  { name: 'Docker', category: 'Cloud & DevOps', description: 'Containerization of applications, multi-stage Dockerfiles, and reproducible environments.', proficiency: 'Proficient' },
+  // { name: 'Docker', category: 'Cloud & DevOps', description: 'Containerization of applications, multi-stage Dockerfiles, and reproducible environments.', proficiency: 'Proficient' },
   { name: 'Vercel & Cloudflare', category: 'Cloud & DevOps', description: 'Edge deployment, continuous integration, DNS management, and CDN caching.', proficiency: 'Advanced' },
-  { name: 'Linux / Bash', category: 'Cloud & DevOps', description: 'Server administration, shell scripting, environment variables, and CLI workflows.', proficiency: 'Proficient' },
+  // { name: 'Linux / Bash', category: 'Cloud & DevOps', description: 'Server administration, shell scripting, environment variables, and CLI workflows.', proficiency: 'Proficient' },
   { name: 'Git & GitHub', category: 'Tools', description: 'Version control, feature branching, pull request workflows, and collaborative reviews.', proficiency: 'Advanced' },
   { name: 'Postman', category: 'Tools', description: 'API testing, automated request collections, and endpoint documentation.', proficiency: 'Proficient' },
 ];
@@ -130,11 +130,10 @@ export default function SkillsPage() {
                   key={cat}
                   type="button"
                   onClick={() => setSelectedCategory(cat)}
-                  className={`rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wider transition ${
-                    selectedCategory === cat
+                  className={`rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wider transition ${selectedCategory === cat
                       ? 'bg-accent text-slate-950 shadow-md shadow-accent/20'
                       : 'border border-white/10 bg-white/5 text-slate-300 hover:border-accent/40 hover:text-white'
-                  }`}
+                    }`}
                 >
                   {cat}
                 </button>
