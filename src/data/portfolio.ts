@@ -11,10 +11,10 @@ export const siteConfig = {
 };
 
 export const skills = {
-  languages: ['JavaScript', 'TypeScript', 'Python', 'SQL'],
-  frameworks: ['React', 'Next.js', 'Node.js', 'Express.js', 'Django'],
-  tools: ['Git & GitHub', 'REST APIs', 'Tailwind CSS', 'React Hook Form', 'Framer Motion'],
-  cloudDevOps: ['Vercel', 'PostgreSQL', 'Docker', 'Linux', 'Cloud basics'],
+  Languages: ['JavaScript', 'TypeScript', 'Python', 'SQL'],
+  Frameworks: ['React', 'Next.js', 'Node.js', 'Express.js', 'Django', 'Tailwind CSS'],
+  Databases: ['PostgreSQL', 'Supabase PostgreSQL'],
+  'Tools & Deployment': ['Git & GitHub', 'REST APIs', 'Vercel'],
 };
 
 export const projects = [
@@ -27,7 +27,7 @@ export const projects = [
     problem: 'Local tourism providers needed a clearer digital presence that made it easier for visitors to compare options and act quickly.',
     solution:
       'Built a responsive product experience with structured service discovery, guided browsing, and a friction-light path to contact or book.',
-    techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'AI Integration'],
+    techStack: ['React', 'Node.js', 'Express.js', 'PostgreSQL', 'Tailwind CSS', 'AI Integration'],
     role: 'Full-stack product builder',
     impact: 'Improved trust and made the service discovery flow easier to navigate for first-time visitors.',
     liveUrl: '#contact',
@@ -39,14 +39,14 @@ export const projects = [
   },
   {
     id: 'dental-clinic',
-    title: 'Dental Clinic Management System',
+    title: 'Fasil Dental – Dental Clinic Management System',
     category: 'Web',
     summary:
       'A clinic operations dashboard designed to simplify appointments, patient follow-up, and everyday admin work.',
     problem: 'Manual scheduling and scattered records caused delays and extra coordination for staff and patients.',
     solution:
       'Designed a full-stack system for appointment management, patient records, and admin workflows with a polished interface.',
-    techStack: ['React', 'Django', 'PostgreSQL', 'REST APIs'],
+    techStack: ['React', 'Django', 'PostgreSQL', 'REST API'],
     role: 'Product engineer',
     impact: 'Reduced admin friction and made scheduling more reliable for both staff and patients.',
     liveUrl: '#contact',
@@ -83,8 +83,8 @@ export const projects = [
       'A digital hotel menu and in-room/table ordering platform that lets guests browse dishes, customize orders, and submit requests seamlessly.',
     problem: 'Printed hotel menus were costly to update and slow manual order taking led to delays and miscommunication.',
     solution:
-      'Built an interactive digital menu and ordering system with real-time item availability, category filtering, and streamlined order submission.',
-    techStack: ['React', 'Next.js', 'Node.js', 'Tailwind CSS', 'PostgreSQL'],
+      'Built an interactive digital menu and ordering system with real-time item availability, category filtering, Telegram Bot notifications, and streamlined order submission.',
+    techStack: ['Django', 'Python', 'HTML', 'CSS', 'JavaScript', 'PostgreSQL', 'Telegram Bot API'],
     role: 'Full-stack developer',
     impact: 'Reduced order turnaround time and simplified menu updates for hospitality staff.',
     liveUrl: '#contact',
@@ -103,7 +103,7 @@ export const projects = [
     problem: 'Manual grade distribution and paper records caused delays, errors, and limited visibility for students and faculty.',
     solution:
       'Engineered a role-based academic portal with secure grade entry, automated GPA calculations, and instant result lookup.',
-    techStack: ['Python', 'Django', 'React', 'PostgreSQL', 'REST APIs'],
+    techStack: ['Django', 'Python', 'SQLite', 'HTML', 'CSS', 'JavaScript'],
     role: 'Full-stack developer',
     impact: 'Streamlined grade publishing and gave students reliable, real-time access to their academic progress.',
     liveUrl: '#contact',
@@ -121,8 +121,8 @@ export const projects = [
       'A full-featured Learning Management System supporting course delivery, student enrollment, progress tracking, and interactive assessments.',
     problem: 'Learners and instructors lacked a unified platform to organize course materials, track progress, and manage quizzes.',
     solution:
-      'Developed a scalable LMS with structured course modules, enrollment workflows, progress dashboards, and responsive media playback.',
-    techStack: ['React', 'Django', 'Python', 'PostgreSQL', 'Tailwind CSS'],
+      'Developed a scalable LMS with structured course modules, JWT authentication, enrollment workflows, progress dashboards, and responsive media playback.',
+    techStack: ['React', 'Tailwind CSS', 'Django REST Framework', 'Python', 'Supabase PostgreSQL', 'SimpleJWT'],
     role: 'Full-stack developer',
     impact: 'Enabled structured online instruction and improved learner engagement across courses.',
     liveUrl: '#contact',
@@ -134,14 +134,14 @@ export const projects = [
   },
   {
     id: 'restaurant-order-management',
-    title: 'Restaurant Order Management System (ROMS) – Restaurant Operations and Kitchen Management System',
+    title: 'Restaurant Order Management System (ROMS)',
     category: 'Web',
     summary:
-      'An end-to-end restaurant operations and kitchen display system coordinating table orders, kitchen queues, and order status tracking.',
+      'An end-to-end restaurant operations and kitchen management system coordinating table orders, kitchen queues, and order status tracking.',
     problem: 'Disconnected front-of-house and kitchen workflows caused ticket bottlenecks and order errors during peak hours.',
     solution:
       'Built a real-time order and kitchen management system with live status boards, table tracking, and streamlined staff coordination.',
-    techStack: ['Node.js', 'React', 'Express.js', 'PostgreSQL', 'REST APIs'],
+    techStack: ['Django', 'Python', 'HTML', 'CSS', 'JavaScript', 'PostgreSQL'],
     role: 'Full-stack developer',
     impact: 'Improved kitchen throughput, reduced order errors, and accelerated table turnover.',
     liveUrl: '#contact',

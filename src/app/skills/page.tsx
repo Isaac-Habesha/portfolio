@@ -23,7 +23,7 @@ import { SectionHeading } from '@/components/section-heading';
 
 type SkillItem = {
   name: string;
-  category: 'Languages' | 'Frontend' | 'Backend' | 'Tools' | 'Cloud & DevOps';
+  category: 'Languages' | 'Frontend' | 'Backend' | 'Databases' | 'Tools & Deployment';
   description: string;
   proficiency: 'Advanced' | 'Proficient' | 'Familiar';
 };
@@ -39,25 +39,24 @@ const detailedSkills: SkillItem[] = [
   { name: 'React', category: 'Frontend', description: 'Hooks, custom state management, performance memoization, and component composition.', proficiency: 'Advanced' },
   { name: 'Next.js (App Router)', category: 'Frontend', description: 'Server Components, SSR/SSG, route handlers, metadata SEO, and fast bundle generation.', proficiency: 'Advanced' },
   { name: 'Tailwind CSS', category: 'Frontend', description: 'Utility-first modern design systems, custom themes, dark mode, and responsive layouts.', proficiency: 'Advanced' },
-  // { name: 'Framer Motion', category: 'Frontend', description: 'Micro-interactions, layout transitions, exit animations, and spring physics.', proficiency: 'Proficient' },
-  { name: 'React Hook Form & Zod', category: 'Frontend', description: 'Schema-driven form validation, type inference, and streamlined error handling.', proficiency: 'Advanced' },
 
   // Backend
   { name: 'Node.js', category: 'Backend', description: 'Event-driven server runtime, stream processing, and non-blocking I/O operations.', proficiency: 'Advanced' },
   { name: 'Express.js', category: 'Backend', description: 'RESTful API endpoints, middleware pipelines, authentication, and error handlers.', proficiency: 'Advanced' },
   { name: 'Django & DRF', category: 'Backend', description: 'Model-view-controller patterns, ORM relationships, authentication, and admin portals.', proficiency: 'Proficient' },
-  { name: 'PostgreSQL', category: 'Backend', description: 'Relational data modeling, foreign keys, transactions, and migration strategies.', proficiency: 'Proficient' },
   { name: 'REST APIs', category: 'Backend', description: 'API contract design, status codes, payload serialization, and client integrations.', proficiency: 'Advanced' },
 
-  // Cloud & DevOps
-  // { name: 'Docker', category: 'Cloud & DevOps', description: 'Containerization of applications, multi-stage Dockerfiles, and reproducible environments.', proficiency: 'Proficient' },
-  { name: 'Vercel & Cloudflare', category: 'Cloud & DevOps', description: 'Edge deployment, continuous integration, DNS management, and CDN caching.', proficiency: 'Advanced' },
-  // { name: 'Linux / Bash', category: 'Cloud & DevOps', description: 'Server administration, shell scripting, environment variables, and CLI workflows.', proficiency: 'Proficient' },
-  { name: 'Git & GitHub', category: 'Tools', description: 'Version control, feature branching, pull request workflows, and collaborative reviews.', proficiency: 'Advanced' },
-  { name: 'Postman', category: 'Tools', description: 'API testing, automated request collections, and endpoint documentation.', proficiency: 'Proficient' },
+  // Databases
+  { name: 'PostgreSQL', category: 'Databases', description: 'Relational data modeling, foreign keys, transactions, and migration strategies.', proficiency: 'Proficient' },
+  { name: 'Supabase PostgreSQL', category: 'Databases', description: 'Managed Postgres hosting, authentication integration, and scalable cloud database workflows.', proficiency: 'Proficient' },
+
+  // Tools & Deployment
+  { name: 'Vercel', category: 'Tools & Deployment', description: 'Production deployments, continuous integration, preview environments, and edge delivery.', proficiency: 'Advanced' },
+  { name: 'Git & GitHub', category: 'Tools & Deployment', description: 'Version control, feature branching, pull request workflows, and collaborative reviews.', proficiency: 'Advanced' },
+  { name: 'Postman', category: 'Tools & Deployment', description: 'API testing, automated request collections, and endpoint documentation.', proficiency: 'Proficient' },
 ];
 
-const categories = ['All', 'Languages', 'Frontend', 'Backend', 'Cloud & DevOps', 'Tools'] as const;
+const categories = ['All', 'Languages', 'Frontend', 'Backend', 'Databases', 'Tools & Deployment'] as const;
 
 const workflows = [
   {

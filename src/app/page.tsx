@@ -167,7 +167,7 @@ export default function Home() {
           <SectionHeading
             eyebrow="Featured Work"
             title="Selected projects & case studies"
-            copy="Real-world products architected and shipped with high attention to user experience and technical quality."
+            copy="Real-world products architected and developed with attention to user experience, functionality, and technical quality."
           />
           <Link href="/projects" className="button-secondary self-start sm:self-auto">
             View All Projects
