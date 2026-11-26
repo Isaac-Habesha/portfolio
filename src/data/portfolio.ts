@@ -58,21 +58,97 @@ export const projects = [
   },
   {
     id: 'fasil-link',
-    title: 'FasilLink Marketplace',
+    title: 'FasilLink – Sales and Rental Marketplace with AI Recommendations',
     category: 'Web',
     summary:
-      'A sell-and-rental marketplace experience focused on discovery, recommendation logic, and accessible workflow design.',
-    problem: 'Fragmented local listings made it hard for users to find relevant products and services quickly.',
+      'A sales and rental marketplace with AI-powered recommendations focused on smart discovery, relevance, and accessible workflow design.',
+    problem: 'Fragmented local listings made it hard for buyers and renters to find relevant products and properties quickly.',
     solution:
-      'Created a marketplace experience with structured listings, role-aware access, and a clearer path from browsing to action.',
-    techStack: ['React', 'Node.js', 'Express.js', 'PostgreSQL'],
+      'Created a full-stack marketplace with structured listings, AI-driven recommendation logic, role-aware access, and a clear path from browsing to action.',
+    techStack: ['React', 'Node.js', 'Express.js', 'PostgreSQL', 'AI Recommendations'],
     role: 'Full-stack developer',
-    impact: 'Improved relevance and made everyday transactions smoother for buyers and sellers.',
+    impact: 'Improved discovery relevance and made everyday sales and rental transactions smoother for users.',
     liveUrl: '#contact',
     githubUrl: 'https://github.com/Isaac-Habesha',
     screenshots: [
       'https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
+    ],
+  },
+  {
+    id: 'hotel-menu',
+    title: 'Hotel Menu – Digital Hotel Menu and Ordering System',
+    category: 'Web',
+    summary:
+      'A digital hotel menu and in-room/table ordering platform that lets guests browse dishes, customize orders, and submit requests seamlessly.',
+    problem: 'Printed hotel menus were costly to update and slow manual order taking led to delays and miscommunication.',
+    solution:
+      'Built an interactive digital menu and ordering system with real-time item availability, category filtering, and streamlined order submission.',
+    techStack: ['React', 'Next.js', 'Node.js', 'Tailwind CSS', 'PostgreSQL'],
+    role: 'Full-stack developer',
+    impact: 'Reduced order turnaround time and simplified menu updates for hospitality staff.',
+    liveUrl: '#contact',
+    githubUrl: 'https://github.com/Isaac-Habesha',
+    screenshots: [
+      'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80',
+    ],
+  },
+  {
+    id: 'student-grade-portal',
+    title: 'Student Grade Portal – Student Academic Results Management System',
+    category: 'Web',
+    summary:
+      'An academic results management portal enabling students to view grades and transcripts securely while instructors manage assessments.',
+    problem: 'Manual grade distribution and paper records caused delays, errors, and limited visibility for students and faculty.',
+    solution:
+      'Engineered a role-based academic portal with secure grade entry, automated GPA calculations, and instant result lookup.',
+    techStack: ['Python', 'Django', 'React', 'PostgreSQL', 'REST APIs'],
+    role: 'Full-stack developer',
+    impact: 'Streamlined grade publishing and gave students reliable, real-time access to their academic progress.',
+    liveUrl: '#contact',
+    githubUrl: 'https://github.com/Isaac-Habesha',
+    screenshots: [
+      'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1200&q=80',
+    ],
+  },
+  {
+    id: 'online-learning-platform',
+    title: 'Online Learning Platform – Learning Management System (LMS)',
+    category: 'Web',
+    summary:
+      'A full-featured Learning Management System supporting course delivery, student enrollment, progress tracking, and interactive assessments.',
+    problem: 'Learners and instructors lacked a unified platform to organize course materials, track progress, and manage quizzes.',
+    solution:
+      'Developed a scalable LMS with structured course modules, enrollment workflows, progress dashboards, and responsive media playback.',
+    techStack: ['React', 'Django', 'Python', 'PostgreSQL', 'Tailwind CSS'],
+    role: 'Full-stack developer',
+    impact: 'Enabled structured online instruction and improved learner engagement across courses.',
+    liveUrl: '#contact',
+    githubUrl: 'https://github.com/Isaac-Habesha',
+    screenshots: [
+      'https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80',
+    ],
+  },
+  {
+    id: 'restaurant-order-management',
+    title: 'Restaurant Order Management System (ROMS) – Restaurant Operations and Kitchen Management System',
+    category: 'Web',
+    summary:
+      'An end-to-end restaurant operations and kitchen display system coordinating table orders, kitchen queues, and order status tracking.',
+    problem: 'Disconnected front-of-house and kitchen workflows caused ticket bottlenecks and order errors during peak hours.',
+    solution:
+      'Built a real-time order and kitchen management system with live status boards, table tracking, and streamlined staff coordination.',
+    techStack: ['Node.js', 'React', 'Express.js', 'PostgreSQL', 'REST APIs'],
+    role: 'Full-stack developer',
+    impact: 'Improved kitchen throughput, reduced order errors, and accelerated table turnover.',
+    liveUrl: '#contact',
+    githubUrl: 'https://github.com/Isaac-Habesha',
+    screenshots: [
+      'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=80',
+      'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80',
     ],
   },
 ];

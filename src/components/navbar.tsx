@@ -6,7 +6,6 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Sparkles, Send } from 'lucide-react';
 import { siteConfig } from '@/data/portfolio';
-import { ThemeToggle } from '@/components/theme-toggle';
 
 const navItems = [
   { name: 'Home', href: '/' },
@@ -64,10 +63,8 @@ export function Navbar() {
           })}
         </nav>
 
-        {/* Right Action & Theme Toggle */}
+        {/* Right Action */}
         <div className="flex items-center gap-3">
-          <ThemeToggle />
-
           <Link
             href="/connect"
             className="hidden items-center gap-2 rounded-full bg-accent px-4 py-2 text-xs font-semibold uppercase tracking-wider text-slate-950 shadow-md shadow-accent/20 transition hover:-translate-y-0.5 hover:bg-[#8bf1e1] sm:inline-flex"

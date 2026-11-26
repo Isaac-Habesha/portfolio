@@ -19,19 +19,6 @@
   --font-display: 'Space Grotesk', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-html.light {
-  --background: #f7fafc;
-  --foreground: #0f172a;
-  --surface: rgba(255, 255, 255, 0.82);
-  --muted: #475569;
-  --border: rgba(15, 23, 42, 0.12);
-  --accent: #0f766e;
-  --accent-2: #2563eb;
-  --page-top: rgba(15, 118, 110, 0.12);
-  --page-mid: rgba(37, 99, 235, 0.12);
-  --page-base: #f7fafc;
-}
-
 html {
   scroll-behavior: smooth;
 }

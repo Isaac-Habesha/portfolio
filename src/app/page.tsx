@@ -43,7 +43,7 @@ function buildStructuredData() {
 }
 
 export default function Home() {
-  const featuredProjects = projects.slice(0, 2);
+  const featuredProjects = projects;
 
   return (
     <main id="main-content">
@@ -72,7 +72,7 @@ export default function Home() {
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
-              Full-stack developer and Computer Science graduate passionate about building fast, responsive, and user-friendly web applications.
+              Full-stack developer specialized in Python, Node.js, React, and Django — building fast, responsive web applications.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -141,17 +141,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Highlights Bar
+      {/* Highlights Bar */}
       <section className="section-shell py-8">
         <FadeIn>
-          <div className="grid grid-cols-2 gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-lg sm:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-lg sm:grid-cols-3">
             <div>
               <p className="font-display text-2xl font-bold text-accent sm:text-3xl">100%</p>
               <p className="mt-1 text-xs text-slate-300">Responsive & Accessible</p>
-            </div>
-            <div>
-              <p className="font-display text-2xl font-bold text-accent sm:text-3xl">CS Degree</p>
-              <p className="mt-1 text-xs text-slate-300">Algorithms & Systems</p>
             </div>
             <div>
               <p className="font-display text-2xl font-bold text-accent sm:text-3xl">Full-Stack</p>
@@ -163,7 +159,7 @@ export default function Home() {
             </div>
           </div>
         </FadeIn>
-      </section> */}
+      </section>
 
       {/* Featured Projects Preview Section */}
       <section className="section-shell py-16 sm:py-20">
