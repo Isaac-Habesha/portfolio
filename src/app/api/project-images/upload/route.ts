@@ -46,10 +46,14 @@ export async function POST(req: Request) {
 
     const blobToken = getBlobToken();
     if (!blobToken && process.env.VERCEL) {
+      const blobKeys = Object.keys(process.env).filter(
+        (k) => (k.includes('BLOB') || k.includes('READ_WRITE')) && !k.startsWith('VERCEL_')
+      );
       return NextResponse.json(
         {
-          error:
-            'Vercel Blob token is missing in this environment (BLOB_READ_WRITE_TOKEN). In Vercel Dashboard → Project Settings → Environment Variables, ensure BLOB_READ_WRITE_TOKEN is enabled for Production, then redeploy.',
+          error: `Vercel Blob token not found in Production runtime (detected keys: ${
+            blobKeys.length > 0 ? blobKeys.join(', ') : 'none'
+          }). Ensure BLOB_READ_WRITE_TOKEN is enabled for Production in Vercel Settings → Environment Variables, then redeploy.`,
         },
         { status: 500 }
       );

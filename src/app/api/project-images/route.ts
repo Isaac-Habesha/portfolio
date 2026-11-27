@@ -22,10 +22,14 @@ export async function GET() {
 export async function PUT(req: Request) {
   try {
     if (!hasBlobStorage() && process.env.VERCEL) {
+      const blobKeys = Object.keys(process.env).filter(
+        (k) => (k.includes('BLOB') || k.includes('READ_WRITE')) && !k.startsWith('VERCEL_')
+      );
       return NextResponse.json(
         {
-          error:
-            'Vercel Blob storage is not connected to this deployment (missing BLOB_READ_WRITE_TOKEN). In your Vercel Dashboard, open Storage → Create → Blob (Public), connect it to this project, and trigger a Redeploy.',
+          error: `Vercel Blob token not found in Production runtime (detected keys: ${
+            blobKeys.length > 0 ? blobKeys.join(', ') : 'none'
+          }). Ensure BLOB_READ_WRITE_TOKEN is enabled for Production in Vercel Settings → Environment Variables, then redeploy.`,
         },
         { status: 500 }
       );
