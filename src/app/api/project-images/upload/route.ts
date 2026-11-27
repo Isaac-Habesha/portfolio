@@ -106,8 +106,9 @@ export async function POST(req: Request) {
         { status: 500 }
       );
     }
+    const detail = error instanceof Error ? error.message : 'Please check your storage configuration.';
     return NextResponse.json(
-      { error: 'Unable to upload images. Please check your storage configuration.' },
+      { error: `Unable to upload images: ${detail}` },
       { status: 500 }
     );
   }

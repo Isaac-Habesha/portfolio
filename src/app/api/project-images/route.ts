@@ -52,8 +52,9 @@ export async function PUT(req: Request) {
         { status: 500 }
       );
     }
+    const detail = error instanceof Error ? error.message : 'Please check your storage configuration.';
     return NextResponse.json(
-      { error: 'Unable to save project gallery. Please check your storage configuration.' },
+      { error: `Unable to save project gallery: ${detail}` },
       { status: 500 }
     );
   }
