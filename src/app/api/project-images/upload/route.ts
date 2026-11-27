@@ -2,7 +2,13 @@ import { NextResponse } from 'next/server';
 import { promises as fs } from 'fs';
 import path from 'path';
 import crypto from 'crypto';
-import { isValidProjectId, MAX_IMAGES_PER_PROJECT, UPLOADS_ROOT } from '@/lib/project-images';
+import { put } from '@vercel/blob';
+import {
+  hasBlobStorage,
+  isValidProjectId,
+  MAX_IMAGES_PER_PROJECT,
+  UPLOADS_ROOT,
+} from '@/lib/project-images';
 
 export const dynamic = 'force-dynamic';
 
@@ -38,8 +44,11 @@ export async function POST(req: Request) {
       );
     }
 
+    const useBlob = hasBlobStorage();
     const projectUploadDir = path.join(UPLOADS_ROOT, projectId);
-    await fs.mkdir(projectUploadDir, { recursive: true });
+    if (!useBlob) {
+      await fs.mkdir(projectUploadDir, { recursive: true });
+    }
 
     const uploadedUrls: string[] = [];
 
@@ -60,26 +69,45 @@ export async function POST(req: Request) {
         ? originalExt
         : (MIME_TO_EXT[file.type] ?? '.png');
 
-      const safeBase = path
-        .basename(file.name, path.extname(file.name))
-        .toLowerCase()
-        .replace(/[^a-z0-9-_]/g, '-')
-        .replace(/-+/g, '-')
-        .slice(0, 40) || 'screenshot';
+      const safeBase =
+        path
+          .basename(file.name, path.extname(file.name))
+          .toLowerCase()
+          .replace(/[^a-z0-9-_]/g, '-')
+          .replace(/-+/g, '-')
+          .slice(0, 40) || 'screenshot';
 
       const uniqueName = `${Date.now()}-${crypto.randomBytes(4).toString('hex')}-${safeBase}${ext}`;
-      const destination = path.join(projectUploadDir, uniqueName);
-      const buffer = Buffer.from(await file.arrayBuffer());
-      await fs.writeFile(destination, buffer);
 
-      uploadedUrls.push(`/api/uploads/${projectId}/${uniqueName}`);
+      if (useBlob) {
+        const blob = await put(`projects/${projectId}/${uniqueName}`, file, {
+          access: 'public',
+          contentType: file.type,
+        });
+        uploadedUrls.push(blob.url);
+      } else {
+        const destination = path.join(projectUploadDir, uniqueName);
+        const buffer = Buffer.from(await file.arrayBuffer());
+        await fs.writeFile(destination, buffer);
+        uploadedUrls.push(`/api/uploads/${projectId}/${uniqueName}`);
+      }
     }
 
     return NextResponse.json({ uploadedUrls });
   } catch (error) {
     console.error('Failed to upload project screenshots:', error);
+    const code = (error as NodeJS.ErrnoException | undefined)?.code;
+    if (code === 'EROFS' || code === 'EACCES' || code === 'EPERM') {
+      return NextResponse.json(
+        {
+          error:
+            'This server has a read-only filesystem. Connect a Vercel Blob store in your Vercel Dashboard (Storage → Create → Blob) and redeploy, or upload screenshots locally via npm run dev.',
+        },
+        { status: 500 }
+      );
+    }
     return NextResponse.json(
-      { error: 'Unable to upload images. Ensure the server has write permissions.' },
+      { error: 'Unable to upload images. Please check your storage configuration.' },
       { status: 500 }
     );
   }

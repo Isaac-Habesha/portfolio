@@ -42,8 +42,18 @@ export async function PUT(req: Request) {
     return NextResponse.json({ galleries });
   } catch (error) {
     console.error('Failed to update project gallery:', error);
+    const code = (error as NodeJS.ErrnoException | undefined)?.code;
+    if (code === 'EROFS' || code === 'EACCES' || code === 'EPERM') {
+      return NextResponse.json(
+        {
+          error:
+            'This server has a read-only filesystem. Connect a Vercel Blob store in your Vercel Dashboard (Storage → Create → Blob) and redeploy, or save screenshots locally via npm run dev.',
+        },
+        { status: 500 }
+      );
+    }
     return NextResponse.json(
-      { error: 'Unable to save project gallery. Ensure the server has write permissions.' },
+      { error: 'Unable to save project gallery. Please check your storage configuration.' },
       { status: 500 }
     );
   }
