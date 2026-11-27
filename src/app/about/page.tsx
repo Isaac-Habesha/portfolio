@@ -42,11 +42,26 @@ const philosophyCards = [
 ];
 
 const highlights = [
-  'Computer Science Degree with strong foundations in algorithms & systems',
-  'Full-stack proficiency across React, Next.js, Node.js, and Django',
-  'Strong emphasis on performance, responsive design, and SEO best practices',
-  'Proven track record delivering client and real-world operational platforms',
-  'Passionate about creating clean developer workflows and accessible interfaces',
+  {
+    label: 'Full-Stack Development',
+    description: 'Practical experience with React, Node.js, Express.js, Python, and Django.',
+  },
+  {
+    label: 'Database Management',
+    description: 'Experience working with PostgreSQL and relational database design.',
+  },
+  {
+    label: 'User-Centered Development',
+    description: 'Focus on responsive interfaces, usability, accessibility, and clean UI design.',
+  },
+  {
+    label: 'Practical Problem-Solving',
+    description: 'Experience translating real-world requirements into functional web applications.',
+  },
+  {
+    label: 'Continuous Growth',
+    description: 'Passionate about learning modern technologies, improving development workflows, and building better software.',
+  },
 ];
 
 export default function AboutPage() {
@@ -80,22 +95,30 @@ export default function AboutPage() {
             <div className="glass-card rounded-[2rem] p-6 sm:p-8 space-y-6">
               <h2 className="text-2xl font-bold text-white">My Journey & Background</h2>
               <p>
-                My passion for software engineering started with curiosity about how complex systems can feel effortless to everyday users. Over the course of my Computer Science studies, I honed my skills in algorithms, data structures, full-stack development, and system architecture.
+                My journey into software engineering began with a curiosity about how technology can solve real-world problems and make everyday experiences simpler. Through my Computer Science studies, I developed a strong foundation in programming, data structures, algorithms, database systems, software engineering, and computer networking.
               </p>
               <p>
-                Beyond academic coursework, I have actively designed and built full-stack solutions for real-world scenarios—from tourism discovery platforms and clinic management systems to multi-role marketplaces.
+                Beyond academics, I have focused on applying what I learn by designing and building practical software solutions. My experience includes developing web applications such as hotel management and digital menu platforms, student grade portals, dental clinic systems, and marketplace solutions for buying, selling, and renting services.
               </p>
               <p>
-                I thrive in environments where engineering meets design: turning ambiguous requirements into structured specifications, crafting responsive UI with Next.js and Tailwind, and developing reliable APIs that scale effortlessly.
+                I enjoy working across the full development lifecycle from understanding requirements and designing user interfaces to building backend services, integrating databases, and deploying applications. My primary technologies include React, JavaScript, Node.js, Express.js, Python, Django, and PostgreSQL, with a strong interest in writing clean, maintainable, and practical code.
+              </p>
+              <p>
+                My internship experience in the IT Support Department at Commercial Bank of Ethiopia also strengthened my understanding of real-world IT operations, network maintenance, troubleshooting, and technical support.
+              </p>
+              <p>
+                I am continuously learning, improving my engineering skills, and exploring better ways to build reliable, user-friendly software that addresses meaningful problems.
               </p>
 
               <div className="pt-2">
-                <h3 className="text-base font-semibold text-white">What I Bring to Every Project:</h3>
+                <h3 className="text-base font-semibold text-white">What I Bring to Every Project</h3>
                 <ul className="mt-3 space-y-2.5">
                   {highlights.map((item) => (
-                    <li key={item} className="flex items-start gap-2.5 text-sm text-slate-300">
+                    <li key={item.label} className="flex items-start gap-2.5 text-sm text-slate-300">
                       <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                      <span>{item}</span>
+                      <span>
+                        <strong className="font-semibold text-white">{item.label}:</strong> {item.description}
+                      </span>
                     </li>
                   ))}
                 </ul>

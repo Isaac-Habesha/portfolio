@@ -12,155 +12,161 @@ export const siteConfig = {
 
 export const skills = {
   Languages: ['JavaScript', 'TypeScript', 'Python', 'SQL'],
-  Frameworks: ['React', 'Next.js', 'Node.js', 'Express.js', 'Django', 'Tailwind CSS'],
-  Databases: ['PostgreSQL', 'Supabase PostgreSQL'],
-  'Tools & Deployment': ['Git & GitHub', 'REST APIs', 'Vercel'],
+  Frontend: ['React', 'Next.js', 'Tailwind CSS'],
+  Backend: ['Node.js', 'Express.js', 'Django', 'REST APIs'],
+  'Databases & Platforms': ['PostgreSQL', 'Supabase'],
+  'Tools & Deployment': ['Git & GitHub', 'Vercel'],
 };
 
-export const projects = [
+export type ProjectItem = {
+  id: string;
+  title: string;
+  category: string;
+  summary: string;
+  overview: string;
+  problem: string;
+  solution: string;
+  features: string[];
+  techStack: string[];
+  role: string;
+};
+
+export const projects: ProjectItem[] = [
   {
-    id: 'tourism-ai',
-    title: 'Tourism & Local Services Platform',
+    id: 'hotel-digital-menu',
+    title: 'Hotel Digital Menu & Online Ordering System',
     category: 'Web',
     summary:
-      'A booking and discovery experience that helps local providers present their services clearly and converts interest into direct inquiries.',
-    problem: 'Local tourism providers needed a clearer digital presence that made it easier for visitors to compare options and act quickly.',
+      'A digital hotel menu and online ordering platform that allows guests to explore menu items, view details, and submit orders online.',
+    overview:
+      'Designed and built a digital hotel menu and online ordering web application that replaces static printed menus with an interactive browsing and ordering experience for guests.',
+    problem:
+      'Traditional printed menus are difficult to keep updated and manual order taking introduces delays and communication errors.',
     solution:
-      'Built a responsive product experience with structured service discovery, guided browsing, and a friction-light path to contact or book.',
-    techStack: ['React', 'Node.js', 'Express.js', 'PostgreSQL', 'Tailwind CSS', 'AI Integration'],
-    role: 'Full-stack product builder',
-    impact: 'Improved trust and made the service discovery flow easier to navigate for first-time visitors.',
-    liveUrl: '#contact',
-    githubUrl: 'https://github.com/Isaac-Habesha',
-    screenshots: [
-      'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80',
+      'Built a structured digital menu and online ordering system backed by PostgreSQL and integrated with the Telegram Bot API for order notifications.',
+    features: [
+      'Interactive menu browsing with category organization and item details',
+      'Online order submission workflow for guests',
+      'Real-time order notifications via Telegram Bot API',
+      'Backend administration for menu items and order management',
     ],
-  },
-  {
-    id: 'dental-clinic',
-    title: 'Fasil Dental – Dental Clinic Management System',
-    category: 'Web',
-    summary:
-      'A clinic operations dashboard designed to simplify appointments, patient follow-up, and everyday admin work.',
-    problem: 'Manual scheduling and scattered records caused delays and extra coordination for staff and patients.',
-    solution:
-      'Designed a full-stack system for appointment management, patient records, and admin workflows with a polished interface.',
-    techStack: ['React', 'Django', 'PostgreSQL', 'REST API'],
-    role: 'Product engineer',
-    impact: 'Reduced admin friction and made scheduling more reliable for both staff and patients.',
-    liveUrl: '#contact',
-    githubUrl: 'https://github.com/Isaac-Habesha',
-    screenshots: [
-      'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1580281657527-47f249e8f4a4?auto=format&fit=crop&w=1200&q=80',
-    ],
-  },
-  {
-    id: 'fasil-link',
-    title: 'FasilLink – Sales and Rental Marketplace with AI Recommendations',
-    category: 'Web',
-    summary:
-      'A sales and rental marketplace with AI-powered recommendations focused on smart discovery, relevance, and accessible workflow design.',
-    problem: 'Fragmented local listings made it hard for buyers and renters to find relevant products and properties quickly.',
-    solution:
-      'Created a full-stack marketplace with structured listings, AI-driven recommendation logic, role-aware access, and a clear path from browsing to action.',
-    techStack: ['React', 'Node.js', 'Express.js', 'PostgreSQL', 'AI Recommendations'],
+    techStack: ['Django', 'Python', 'PostgreSQL', 'JavaScript', 'HTML', 'CSS', 'Telegram Bot API'],
     role: 'Full-stack developer',
-    impact: 'Improved discovery relevance and made everyday sales and rental transactions smoother for users.',
-    liveUrl: '#contact',
-    githubUrl: 'https://github.com/Isaac-Habesha',
-    screenshots: [
-      'https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80',
-    ],
-  },
-  {
-    id: 'hotel-menu',
-    title: 'Hotel Menu – Digital Hotel Menu and Ordering System',
-    category: 'Web',
-    summary:
-      'A digital hotel menu and in-room/table ordering platform that lets guests browse dishes, customize orders, and submit requests seamlessly.',
-    problem: 'Printed hotel menus were costly to update and slow manual order taking led to delays and miscommunication.',
-    solution:
-      'Built an interactive digital menu and ordering system with real-time item availability, category filtering, Telegram Bot notifications, and streamlined order submission.',
-    techStack: ['Django', 'Python', 'HTML', 'CSS', 'JavaScript', 'PostgreSQL', 'Telegram Bot API'],
-    role: 'Full-stack developer',
-    impact: 'Reduced order turnaround time and simplified menu updates for hospitality staff.',
-    liveUrl: '#contact',
-    githubUrl: 'https://github.com/Isaac-Habesha',
-    screenshots: [
-      'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80',
-    ],
-  },
-  {
-    id: 'student-grade-portal',
-    title: 'Student Grade Portal – Student Academic Results Management System',
-    category: 'Web',
-    summary:
-      'An academic results management portal enabling students to view grades and transcripts securely while instructors manage assessments.',
-    problem: 'Manual grade distribution and paper records caused delays, errors, and limited visibility for students and faculty.',
-    solution:
-      'Engineered a role-based academic portal with secure grade entry, automated GPA calculations, and instant result lookup.',
-    techStack: ['Django', 'Python', 'SQLite', 'HTML', 'CSS', 'JavaScript'],
-    role: 'Full-stack developer',
-    impact: 'Streamlined grade publishing and gave students reliable, real-time access to their academic progress.',
-    liveUrl: '#contact',
-    githubUrl: 'https://github.com/Isaac-Habesha',
-    screenshots: [
-      'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1200&q=80',
-    ],
-  },
-  {
-    id: 'online-learning-platform',
-    title: 'Online Learning Platform – Learning Management System (LMS)',
-    category: 'Web',
-    summary:
-      'A full-featured Learning Management System supporting course delivery, student enrollment, progress tracking, and interactive assessments.',
-    problem: 'Learners and instructors lacked a unified platform to organize course materials, track progress, and manage quizzes.',
-    solution:
-      'Developed a scalable LMS with structured course modules, JWT authentication, enrollment workflows, progress dashboards, and responsive media playback.',
-    techStack: ['React', 'Tailwind CSS', 'Django REST Framework', 'Python', 'Supabase PostgreSQL', 'SimpleJWT'],
-    role: 'Full-stack developer',
-    impact: 'Enabled structured online instruction and improved learner engagement across courses.',
-    liveUrl: '#contact',
-    githubUrl: 'https://github.com/Isaac-Habesha',
-    screenshots: [
-      'https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80',
-    ],
   },
   {
     id: 'restaurant-order-management',
-    title: 'Restaurant Order Management System (ROMS)',
+    title: 'Restaurant Order Management System',
     category: 'Web',
     summary:
-      'An end-to-end restaurant operations and kitchen management system coordinating table orders, kitchen queues, and order status tracking.',
-    problem: 'Disconnected front-of-house and kitchen workflows caused ticket bottlenecks and order errors during peak hours.',
+      'A restaurant operations management system designed to manage customer orders, approval workflows, kitchen operations, order status updates, and administrative activities.',
+    overview:
+      'Developed a multi-role restaurant operations platform coordinating customer orders, approval stages, kitchen queues, status tracking, and administrative oversight.',
+    problem:
+      'Disconnected ordering, approval, and kitchen workflows create bottlenecks and make it hard for staff to track order progress accurately.',
     solution:
-      'Built a real-time order and kitchen management system with live status boards, table tracking, and streamlined staff coordination.',
-    techStack: ['Django', 'Python', 'HTML', 'CSS', 'JavaScript', 'PostgreSQL'],
-    role: 'Full-stack developer',
-    impact: 'Improved kitchen throughput, reduced order errors, and accelerated table turnover.',
-    liveUrl: '#contact',
-    githubUrl: 'https://github.com/Isaac-Habesha',
-    screenshots: [
-      'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80',
+      'Implemented a modular Django and Channels-powered system with role-based apps for accounts, menu, orders, approvals, kitchen operations, payments, analytics, and audit logs.',
+    features: [
+      'Customer order intake and structured approval workflows',
+      'Live kitchen operations board and order status updates via Django Channels',
+      'Role-based access across staff, kitchen, and administrative workflows',
+      'Administrative dashboards, payment tracking, analytics, and audit logging',
     ],
+    techStack: ['Django', 'Python', 'PostgreSQL', 'Django Channels', 'Redis', 'Bootstrap 5', 'HTML', 'CSS', 'JavaScript'],
+    role: 'Full-stack developer',
+  },
+  {
+    id: 'hotel-booking-platform',
+    title: 'Hotel Business Website & Booking Platform',
+    category: 'Web',
+    summary:
+      'A professional hotel website that allows visitors to explore hotel information, accommodation, facilities, and services, with an integrated booking feature.',
+    overview:
+      'Built a modern, responsive hospitality website and booking platform enabling prospective guests to browse rooms, amenities, and services and submit booking requests directly.',
+    problem:
+      'Visitors needed a clear, trustworthy digital experience to explore accommodation options and initiate bookings without friction.',
+    solution:
+      'Created a React and Tailwind CSS frontend connected to Supabase for data management and Resend for booking communication workflows.',
+    features: [
+      'Responsive showcase of hotel information, rooms, facilities, and services',
+      'Integrated online booking request workflow',
+      'Backend data integration with Supabase',
+      'Automated email handling powered by Resend',
+    ],
+    techStack: ['React', 'Vite', 'Tailwind CSS', 'Supabase', 'Resend', 'JavaScript'],
+    role: 'Full-stack developer',
+  },
+  {
+    id: 'student-grade-portal',
+    title: 'Student Grade Portal',
+    category: 'Web',
+    summary:
+      'An academic results management platform that allows students to access published course grades using their assigned student IDs. Authorized instructors manage and publish academic results.',
+    overview:
+      'Engineered a role-aware academic results portal allowing instructors to record and publish grades while giving students direct access to their published course results.',
+    problem:
+      'Manual grade distribution and paper-based result tracking create delays and limit timely visibility for students and instructors.',
+    solution:
+      'Built a Django web application with student ID-based grade lookup and dedicated instructor workflows for managing and publishing academic results.',
+    features: [
+      'Student grade lookup using assigned student IDs',
+      'Authorized instructor access for managing and publishing course results',
+      'Structured academic records stored in SQLite',
+      'Clean, responsive interface built with HTML, CSS, and JavaScript',
+    ],
+    techStack: ['Django', 'Python', 'SQLite', 'HTML', 'CSS', 'JavaScript'],
+    role: 'Full-stack developer',
+  },
+  {
+    id: 'online-learning-platform',
+    title: 'Online Learning Management Platform',
+    category: 'Web',
+    summary:
+      'An online learning platform designed to manage courses, instructors, learners, and educational content through a dedicated web application.',
+    overview:
+      'Architecting a decoupled full-stack Learning Management System with a React and Tailwind CSS frontend paired with a Django REST Framework API and JWT authentication.',
+    problem:
+      'Instructors and learners need a unified digital environment to organize courses, manage enrollments, and deliver structured educational content.',
+    solution:
+      'Building a RESTful backend with Django REST Framework and SimpleJWT backed by PostgreSQL/Supabase, consumed by a responsive React client.',
+    features: [
+      'Course, instructor, and learner management workflows',
+      'Structured educational content delivery',
+      'Token-based authentication using SimpleJWT',
+      'Responsive frontend built with React and Tailwind CSS',
+    ],
+    techStack: ['React', 'Tailwind CSS', 'Django REST Framework', 'Python', 'PostgreSQL', 'Supabase', 'SimpleJWT'],
+    role: 'Full-stack developer',
+  },
+  {
+    id: 'dental-clinic-website',
+    title: 'Dental Clinic Website',
+    category: 'Web',
+    summary:
+      'A professional dental clinic website that presents clinic information, dental services, and patient-facing functionality.',
+    overview:
+      'Designed a clean, patient-friendly dental clinic web platform focused on presenting clinic details, available dental treatments, and accessible patient-facing interactions.',
+    problem:
+      'Patients looking for dental care need clear information about available services and an approachable way to connect with the clinic online.',
+    solution:
+      'Structured a full-stack architecture combining a React frontend with a Django and PostgreSQL backend for clinic information and patient-facing features.',
+    features: [
+      'Clear presentation of clinic information and dental services',
+      'Patient-facing interface designed for accessibility and ease of use',
+      'Structured backend architecture with Django and PostgreSQL',
+    ],
+    techStack: ['React', 'Django', 'PostgreSQL'],
+    role: 'Full-stack developer',
   },
 ];
 
 export const timeline = [
   {
-    year: '2024',
+    year: '2026',
     title: 'Computer Science graduate',
     description: 'Built a strong foundation in software development, systems thinking, and product-focused engineering through coursework and applied projects.',
   },
   {
-    year: '2024',
+    year: '2025',
     title: 'Software and IT internship',
     description: 'Worked in a practical environment where I improved workflows, collaborated with teams, and turned ideas into reliable web solutions.',
   },

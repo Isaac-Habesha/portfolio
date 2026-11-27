@@ -14,6 +14,7 @@ import {
   User,
   Star,
   CheckCircle2,
+  ImageOff,
 } from 'lucide-react';
 import {
   projects,
@@ -21,8 +22,11 @@ import {
   siteConfig,
   testimonials,
 } from '@/data/portfolio';
+import { readProjectGalleryMap } from '@/lib/project-images';
 import { FadeIn } from '@/components/motion';
 import { SectionHeading } from '@/components/section-heading';
+
+export const dynamic = 'force-dynamic';
 
 function buildStructuredData() {
   const siteUrl =
@@ -42,8 +46,9 @@ function buildStructuredData() {
   };
 }
 
-export default function Home() {
+export default async function Home() {
   const featuredProjects = projects;
+  const galleries = await readProjectGalleryMap();
 
   return (
     <main id="main-content">
@@ -144,18 +149,26 @@ export default function Home() {
       {/* Highlights Bar */}
       <section className="section-shell py-8">
         <FadeIn>
-          <div className="grid grid-cols-1 gap-4 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-lg sm:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-lg sm:grid-cols-2 lg:grid-cols-4">
             <div>
               <p className="font-display text-2xl font-bold text-accent sm:text-3xl">100%</p>
-              <p className="mt-1 text-xs text-slate-300">Responsive & Accessible</p>
+              <p className="mt-1 text-sm font-semibold text-white">Responsive Design</p>
+              <p className="mt-1 text-xs text-slate-300">Mobile-first, accessible user interfaces</p>
             </div>
             <div>
               <p className="font-display text-2xl font-bold text-accent sm:text-3xl">Full-Stack</p>
-              <p className="mt-1 text-xs text-slate-300">Next.js, Node & Django</p>
+              <p className="mt-1 text-sm font-semibold text-white">Development</p>
+              <p className="mt-1 text-xs text-slate-300">React, Node.js & Django</p>
+            </div>
+            <div>
+              <p className="font-display text-2xl font-bold text-accent sm:text-3xl">End-to-End</p>
+              <p className="mt-1 text-sm font-semibold text-white">Product Development</p>
+              <p className="mt-1 text-xs text-slate-300">Frontend, backend & database integration</p>
             </div>
             <div>
               <p className="font-display text-2xl font-bold text-accent sm:text-3xl">&lt;24h</p>
-              <p className="mt-1 text-xs text-slate-300">Fast Response Time</p>
+              <p className="mt-1 text-sm font-semibold text-white">Response Time</p>
+              <p className="mt-1 text-xs text-slate-300">Typical communication response target</p>
             </div>
           </div>
         </FadeIn>
@@ -176,54 +189,65 @@ export default function Home() {
         </div>
 
         <div className="mt-10 grid gap-8">
-          {featuredProjects.map((project, idx) => (
-            <FadeIn key={project.id} delay={idx * 0.1}>
-              <div className="glass-card overflow-hidden rounded-[2rem] transition hover:border-accent/40">
-                <div className="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
-                  <div className="p-6 sm:p-8 flex flex-col justify-between space-y-6">
-                    <div>
-                      <div className="flex items-center gap-3">
-                        <span className="rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-accent">
-                          {project.category}
-                        </span>
-                        <span className="text-xs text-slate-400">{project.role}</span>
-                      </div>
-                      <h3 className="mt-4 text-2xl font-bold text-white">{project.title}</h3>
-                      <p className="mt-2 text-sm leading-6 text-slate-300">{project.summary}</p>
-
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {project.techStack.map((tech) => (
-                          <span key={tech} className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-slate-300">
-                            {tech}
+          {featuredProjects.map((project, idx) => {
+            const coverImage = galleries[project.id]?.[0];
+            return (
+              <FadeIn key={project.id} delay={idx * 0.1}>
+                <div className="glass-card overflow-hidden rounded-[2rem] transition hover:border-accent/40">
+                  <div className="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
+                    <div className="p-6 sm:p-8 flex flex-col justify-between space-y-6">
+                      <div>
+                        <div className="flex items-center gap-3">
+                          <span className="rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-accent">
+                            {project.category}
                           </span>
-                        ))}
+                          <span className="text-xs text-slate-400">{project.role}</span>
+                        </div>
+                        <h3 className="mt-4 text-2xl font-bold text-white">{project.title}</h3>
+                        <p className="mt-2 text-sm leading-6 text-slate-300">{project.summary}</p>
+
+                        <div className="mt-4 flex flex-wrap gap-2">
+                          {project.techStack.map((tech) => (
+                            <span key={tech} className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-slate-300">
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="flex flex-wrap gap-3 pt-4 border-t border-white/10">
+                        <Link href={`/projects/${project.id}`} className="button-primary text-xs">
+                          View Project Details
+                          <ArrowUpRight className="ml-1.5 h-3.5 w-3.5" />
+                        </Link>
                       </div>
                     </div>
 
-                    <div className="flex flex-wrap gap-3 pt-4 border-t border-white/10">
-                      <Link href="/projects" className="button-primary text-xs">
-                        Read Case Study
-                        <ArrowUpRight className="ml-1.5 h-3.5 w-3.5" />
-                      </Link>
-                      <a href={project.githubUrl} target="_blank" rel="noreferrer" className="button-secondary text-xs">
-                        <Github className="mr-1.5 h-3.5 w-3.5" />
-                        GitHub
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="relative min-h-64 border-t border-white/10 lg:border-l lg:border-t-0">
-                    <Image
-                      src={project.screenshots[0]}
-                      alt={project.title}
-                      fill
-                      className="object-cover"
-                    />
+                    <Link
+                      href={`/projects/${project.id}`}
+                      className="relative flex min-h-64 items-center justify-center border-t border-white/10 bg-slate-950/60 lg:border-l lg:border-t-0"
+                    >
+                      {coverImage ? (
+                        /* eslint-disable-next-line @next/next/no-img-element */
+                        <img
+                          src={coverImage}
+                          alt={`${project.title} cover screenshot`}
+                          className="h-full w-full object-cover"
+                        />
+                      ) : (
+                        <div className="flex flex-col items-center justify-center p-6 text-center">
+                          <ImageOff className="h-7 w-7 text-slate-500" />
+                          <p className="mt-2 text-xs font-medium text-slate-400">
+                            No cover screenshot uploaded yet
+                          </p>
+                        </div>
+                      )}
+                    </Link>
                   </div>
                 </div>
-              </div>
-            </FadeIn>
-          ))}
+              </FadeIn>
+            );
+          })}
         </div>
       </section>
 
@@ -241,7 +265,7 @@ export default function Home() {
           </Link>
         </div>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {Object.entries(skills).map(([group, items], index) => (
             <FadeIn key={group} delay={index * 0.06}>
               <div className="glass-card flex h-full flex-col justify-between rounded-[1.5rem] p-6 transition hover:border-accent/40">

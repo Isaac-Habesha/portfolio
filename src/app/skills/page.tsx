@@ -25,35 +25,34 @@ type SkillItem = {
   name: string;
   category: 'Languages' | 'Frontend' | 'Backend' | 'Databases' | 'Tools & Deployment';
   description: string;
-  proficiency: 'Advanced' | 'Proficient' | 'Familiar';
 };
 
 const detailedSkills: SkillItem[] = [
   // Languages
-  { name: 'TypeScript', category: 'Languages', description: 'Type-safe scalable systems, generic interfaces, and strict compiler configurations.', proficiency: 'Advanced' },
-  { name: 'JavaScript (ES6+)', category: 'Languages', description: 'Modern asynchronous programming, closures, event loop, and modular architecture.', proficiency: 'Advanced' },
-  { name: 'Python', category: 'Languages', description: 'Data processing, backend scripting, Django REST framework, and automation.', proficiency: 'Proficient' },
-  { name: 'SQL', category: 'Languages', description: 'Relational database schema modeling, complex queries, indexing, and optimizations.', proficiency: 'Proficient' },
+  { name: 'TypeScript', category: 'Languages', description: 'Type-safe scalable systems, generic interfaces, and strict compiler configurations.' },
+  { name: 'JavaScript (ES6+)', category: 'Languages', description: 'Modern asynchronous programming, closures, event loop, and modular architecture.' },
+  { name: 'Python', category: 'Languages', description: 'Data processing, backend scripting, Django REST framework, and automation.' },
+  { name: 'SQL', category: 'Languages', description: 'Relational database schema modeling, complex queries, indexing, and optimizations.' },
 
   // Frontend
-  { name: 'React', category: 'Frontend', description: 'Hooks, custom state management, performance memoization, and component composition.', proficiency: 'Advanced' },
-  { name: 'Next.js (App Router)', category: 'Frontend', description: 'Server Components, SSR/SSG, route handlers, metadata SEO, and fast bundle generation.', proficiency: 'Advanced' },
-  { name: 'Tailwind CSS', category: 'Frontend', description: 'Utility-first modern design systems, custom themes, dark mode, and responsive layouts.', proficiency: 'Advanced' },
+  { name: 'React', category: 'Frontend', description: 'Hooks, custom state management, performance memoization, and component composition.' },
+  { name: 'Next.js (App Router)', category: 'Frontend', description: 'Server Components, SSR/SSG, route handlers, metadata SEO, and fast bundle generation.' },
+  { name: 'Tailwind CSS', category: 'Frontend', description: 'Utility-first modern design systems, custom themes, dark mode, and responsive layouts.' },
 
   // Backend
-  { name: 'Node.js', category: 'Backend', description: 'Event-driven server runtime, stream processing, and non-blocking I/O operations.', proficiency: 'Advanced' },
-  { name: 'Express.js', category: 'Backend', description: 'RESTful API endpoints, middleware pipelines, authentication, and error handlers.', proficiency: 'Advanced' },
-  { name: 'Django & DRF', category: 'Backend', description: 'Model-view-controller patterns, ORM relationships, authentication, and admin portals.', proficiency: 'Proficient' },
-  { name: 'REST APIs', category: 'Backend', description: 'API contract design, status codes, payload serialization, and client integrations.', proficiency: 'Advanced' },
+  { name: 'Node.js', category: 'Backend', description: 'Event-driven server runtime, stream processing, and non-blocking I/O operations.' },
+  { name: 'Express.js', category: 'Backend', description: 'RESTful API endpoints, middleware pipelines, authentication, and error handlers.' },
+  { name: 'Django & DRF', category: 'Backend', description: 'Model-view-controller patterns, ORM relationships, authentication, and admin portals.' },
+  { name: 'REST APIs', category: 'Backend', description: 'API contract design, status codes, payload serialization, and client integrations.' },
 
   // Databases
-  { name: 'PostgreSQL', category: 'Databases', description: 'Relational data modeling, foreign keys, transactions, and migration strategies.', proficiency: 'Proficient' },
-  { name: 'Supabase PostgreSQL', category: 'Databases', description: 'Managed Postgres hosting, authentication integration, and scalable cloud database workflows.', proficiency: 'Proficient' },
+  { name: 'PostgreSQL', category: 'Databases', description: 'Relational data modeling, foreign keys, transactions, and migration strategies.' },
+  { name: 'Supabase PostgreSQL', category: 'Databases', description: 'Managed Postgres hosting, authentication integration, and scalable cloud database workflows.' },
 
   // Tools & Deployment
-  { name: 'Vercel', category: 'Tools & Deployment', description: 'Production deployments, continuous integration, preview environments, and edge delivery.', proficiency: 'Advanced' },
-  { name: 'Git & GitHub', category: 'Tools & Deployment', description: 'Version control, feature branching, pull request workflows, and collaborative reviews.', proficiency: 'Advanced' },
-  { name: 'Postman', category: 'Tools & Deployment', description: 'API testing, automated request collections, and endpoint documentation.', proficiency: 'Proficient' },
+  { name: 'Vercel', category: 'Tools & Deployment', description: 'Production deployments, continuous integration, preview environments, and edge delivery.' },
+  { name: 'Git & GitHub', category: 'Tools & Deployment', description: 'Version control, feature branching, pull request workflows, and collaborative reviews.' },
+  { name: 'Swagger', category: 'Tools & Deployment', description: 'OpenAPI specification, interactive API documentation, and endpoint testing.' },
 ];
 
 const categories = ['All', 'Languages', 'Frontend', 'Backend', 'Databases', 'Tools & Deployment'] as const;
@@ -159,14 +158,9 @@ export default function SkillsPage() {
             <FadeIn key={skill.name} delay={index * 0.03}>
               <div className="glass-card flex h-full flex-col justify-between rounded-[1.5rem] p-5 transition hover:-translate-y-1 hover:border-accent/40">
                 <div>
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="text-xs font-bold uppercase tracking-wider text-accent">
-                      {skill.category}
-                    </span>
-                    <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[11px] font-medium text-slate-300">
-                      {skill.proficiency}
-                    </span>
-                  </div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-accent">
+                    {skill.category}
+                  </span>
                   <h3 className="mt-3 text-lg font-bold text-white">{skill.name}</h3>
                   <p className="mt-2 text-xs leading-5 text-slate-300">{skill.description}</p>
                 </div>
