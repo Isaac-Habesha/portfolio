@@ -4,7 +4,7 @@ import path from 'path';
 import crypto from 'crypto';
 import { put } from '@vercel/blob';
 import {
-  hasBlobStorage,
+  getBlobToken,
   isValidProjectId,
   MAX_IMAGES_PER_PROJECT,
   UPLOADS_ROOT,
@@ -44,19 +44,19 @@ export async function POST(req: Request) {
       );
     }
 
-    const useBlob = hasBlobStorage();
-    if (!useBlob && process.env.VERCEL) {
+    const blobToken = getBlobToken();
+    if (!blobToken && process.env.VERCEL) {
       return NextResponse.json(
         {
           error:
-            'Vercel Blob storage is not connected to this deployment (missing BLOB_READ_WRITE_TOKEN). In your Vercel Dashboard, open Storage → Create → Blob (Public), connect it to this project, and trigger a Redeploy.',
+            'Vercel Blob token is missing in this environment (BLOB_READ_WRITE_TOKEN). In Vercel Dashboard → Project Settings → Environment Variables, ensure BLOB_READ_WRITE_TOKEN is enabled for Production, then redeploy.',
         },
         { status: 500 }
       );
     }
 
     const projectUploadDir = path.join(UPLOADS_ROOT, projectId);
-    if (!useBlob) {
+    if (!blobToken) {
       await fs.mkdir(projectUploadDir, { recursive: true });
     }
 
@@ -89,10 +89,11 @@ export async function POST(req: Request) {
 
       const uniqueName = `${Date.now()}-${crypto.randomBytes(4).toString('hex')}-${safeBase}${ext}`;
 
-      if (useBlob) {
+      if (blobToken) {
         const blob = await put(`projects/${projectId}/${uniqueName}`, file, {
           access: 'public',
           contentType: file.type,
+          token: blobToken,
         });
         uploadedUrls.push(blob.url);
       } else {

@@ -13,8 +13,18 @@ export type ProjectGalleryMap = Record<string, string[]>;
 
 const validProjectIds = new Set(projects.map((project) => project.id));
 
+export function getBlobToken(): string | undefined {
+  if (process.env.BLOB_READ_WRITE_TOKEN) {
+    return process.env.BLOB_READ_WRITE_TOKEN;
+  }
+  const customKey = Object.keys(process.env).find(
+    (key) => key.endsWith('_READ_WRITE_TOKEN') && Boolean(process.env[key])
+  );
+  return customKey ? process.env[customKey] : undefined;
+}
+
 export function hasBlobStorage(): boolean {
-  return Boolean(process.env.BLOB_READ_WRITE_TOKEN);
+  return Boolean(getBlobToken());
 }
 
 export function isValidProjectId(projectId: string): boolean {
@@ -52,9 +62,10 @@ async function readLocalGalleryMap(): Promise<ProjectGalleryMap> {
 }
 
 export async function readProjectGalleryMap(): Promise<ProjectGalleryMap> {
-  if (hasBlobStorage()) {
+  const token = getBlobToken();
+  if (token) {
     try {
-      const { blobs } = await list({ prefix: BLOB_CONFIG_PATH, limit: 1 });
+      const { blobs } = await list({ prefix: BLOB_CONFIG_PATH, limit: 1, token });
       const configBlob = blobs.find((b) => b.pathname === BLOB_CONFIG_PATH) ?? blobs[0];
       if (configBlob?.url) {
         const res = await fetch(configBlob.url, { cache: 'no-store' });
@@ -78,12 +89,14 @@ export async function getProjectImages(projectId: string): Promise<string[]> {
 
 export async function writeProjectGalleryMap(map: ProjectGalleryMap): Promise<void> {
   const serialized = JSON.stringify(map, null, 2);
-  if (hasBlobStorage()) {
+  const token = getBlobToken();
+  if (token) {
     await put(BLOB_CONFIG_PATH, serialized, {
       access: 'public',
       addRandomSuffix: false,
       allowOverwrite: true,
       contentType: 'application/json',
+      token,
     });
     return;
   }
@@ -111,11 +124,12 @@ export async function updateProjectGallery(projectId: string, images: string[]):
   const removed = previousImages.filter((url) => !sanitized.includes(url));
 
   // Clean up removed Vercel Blob images
-  if (hasBlobStorage()) {
+  const token = getBlobToken();
+  if (token) {
     const blobUrlsToDelete = removed.filter((url) => url.includes('blob.vercel-storage.com'));
     if (blobUrlsToDelete.length > 0) {
       try {
-        await del(blobUrlsToDelete);
+        await del(blobUrlsToDelete, { token });
       } catch {
         // Ignore cleanup failure
       }
