@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import {
+  hasBlobStorage,
   isValidProjectId,
   MAX_IMAGES_PER_PROJECT,
   readProjectGalleryMap,
@@ -20,6 +21,16 @@ export async function GET() {
 
 export async function PUT(req: Request) {
   try {
+    if (!hasBlobStorage() && process.env.VERCEL) {
+      return NextResponse.json(
+        {
+          error:
+            'Vercel Blob storage is not connected to this deployment (missing BLOB_READ_WRITE_TOKEN). In your Vercel Dashboard, open Storage → Create → Blob (Public), connect it to this project, and trigger a Redeploy.',
+        },
+        { status: 500 }
+      );
+    }
+
     const body = (await req.json()) as { projectId?: unknown; images?: unknown };
     const projectId = typeof body.projectId === 'string' ? body.projectId : '';
     if (!isValidProjectId(projectId)) {

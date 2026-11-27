@@ -45,6 +45,16 @@ export async function POST(req: Request) {
     }
 
     const useBlob = hasBlobStorage();
+    if (!useBlob && process.env.VERCEL) {
+      return NextResponse.json(
+        {
+          error:
+            'Vercel Blob storage is not connected to this deployment (missing BLOB_READ_WRITE_TOKEN). In your Vercel Dashboard, open Storage → Create → Blob (Public), connect it to this project, and trigger a Redeploy.',
+        },
+        { status: 500 }
+      );
+    }
+
     const projectUploadDir = path.join(UPLOADS_ROOT, projectId);
     if (!useBlob) {
       await fs.mkdir(projectUploadDir, { recursive: true });
